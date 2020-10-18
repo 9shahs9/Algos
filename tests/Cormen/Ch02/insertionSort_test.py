@@ -1,4 +1,4 @@
-import Cormen.Ch02.InsertionSort as algos
+import Cormen.Ch02.insertion_sort as algos
 
 
 def test_insertion_sort():
