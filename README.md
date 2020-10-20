@@ -4,4 +4,5 @@ The algorithms are primarily from [Introduction to Algorithms](https://www.amazo
 
 
 1. [Insertion sort](https://github.com/bezgoan/Algos/blob/main/Cormen/Ch02/insertion_sort.py)
-2. [Linear Search](https://github.com/bezgoan/Algos/blob/main/Cormen/Ch02/linear_search.py)
+2. [Linear search](https://github.com/bezgoan/Algos/blob/main/Cormen/Ch02/linear_search.py)
+3. [Selection sort](https://github.com/bezgoan/Algos/blob/main/Cormen/Ch02/selection_sort.py)
