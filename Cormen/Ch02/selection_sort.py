@@ -25,7 +25,6 @@ def selection_sort(A):
         Algorithm terminates when the index has sorted last but one element in the array.
         As the last element will be the least in the remaining list, which is itself.
     """
-
     for i in range(0, len(A)-1):
         min_val=A[i]
         min_idx = i
