@@ -74,3 +74,19 @@ def find_max_subarray(A, low, high):
         return (right_low, right_high, right_sum)
     return (cross_low, cross_high, cross_sum)
 
+
+def find_max_subarray_brute_force(A, low, high):
+    max_sum = float('-inf')
+    st_idx = 0
+    end_idx = 0
+    for i in range(low, high):
+        sum = A[i]
+
+        for j in range(i+1, high):
+            sum = sum + A[j]
+            if sum > max_sum:
+                max_sum = sum
+                st_idx = i
+                end_idx = j
+    return st_idx,end_idx,max_sum
+
