@@ -26,7 +26,7 @@ divide-and-conquer :
 """
 
 
-def find_max_crossing_subarray(A, low, mid, high):
+def find_max_crossing_subarray(low, mid, high, A):
     '''
     Combine method of the divide-and-conquer algorithm
 
@@ -55,18 +55,18 @@ def find_max_crossing_subarray(A, low, mid, high):
 
 
 
-def find_max_subarray(A, low, high):
+def find_max_subarray(low, high, A):
     'Base case of one element in the Array'
     if high == low :
         return (low, high, A[low])
 
     'Dividing the problem in two sub-problems.'
     mid = (int)((low+high) / 2)
-    (left_low, left_high, left_sum ) = find_max_subarray(A, low, mid)
-    (right_low, right_high, right_sum) = find_max_subarray(A, mid+1, high)
+    (left_low, left_high, left_sum ) = find_max_subarray(low, mid, A)
+    (right_low, right_high, right_sum) = find_max_subarray(mid+1, high, A)
 
     'Combine phase of divide-and-conquer'
-    (cross_low, cross_high, cross_sum) = find_max_crossing_subarray(A, low, mid, high)
+    (cross_low, cross_high, cross_sum) = find_max_crossing_subarray(low, mid, high, A)
 
     if left_sum >= right_sum and left_sum >= cross_sum:
         return (left_low, left_high, left_sum)
@@ -75,13 +75,12 @@ def find_max_subarray(A, low, high):
     return (cross_low, cross_high, cross_sum)
 
 
-def find_max_subarray_brute_force(A, low, high):
+def find_max_subarray_brute_force(low, high, A):
     max_sum = float('-inf')
     st_idx = 0
     end_idx = 0
     for i in range(low, high):
         sum = A[i]
-
         for j in range(i+1, high):
             sum = sum + A[j]
             if sum > max_sum:
@@ -89,4 +88,25 @@ def find_max_subarray_brute_force(A, low, high):
                 st_idx = i
                 end_idx = j
     return st_idx,end_idx,max_sum
+
+def linear_max_subarray_solution(A):
+    m_seq = 0
+    m_max = float('-inf')
+    max_low = 0
+    max_high = 0
+    max_st = 0
+
+    for i in range(0,len(A),1):
+        m_seq += A[i]
+        if m_seq > m_max:
+            max_low = max_st
+            max_high = i
+            m_max = m_seq
+        if m_seq < 0:
+            m_seq = 0
+            max_st = i+1
+    return max_low, max_high, m_max
+
+
+
 
